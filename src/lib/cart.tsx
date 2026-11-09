@@ -42,9 +42,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       add: (slug, size, qty) =>
         setRaw((r) => {
           const i = r.findIndex((l) => l.slug === slug && l.size === size);
-          if (i >= 0) {
+          const cur = r[i];
+          if (cur) {
             const c = [...r];
-            c[i] = { ...c[i], qty: c[i].qty + qty };
+            c[i] = { ...cur, qty: cur.qty + qty };
             return c;
           }
           return [...r, { slug, size, qty }];
