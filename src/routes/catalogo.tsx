@@ -2,12 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { products, categoryLabel, type Category } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 
-type Search = { c?: Category };
+type Search = { c?: Category | undefined };
 
 export const Route = createFileRoute("/catalogo")({
-  validateSearch: (s: Record<string, unknown>): Search => ({
-    c: s.c === "menino" || s.c === "menina" || s.c === "bebe" ? s.c : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): Search => {
+    const v = s["c"];
+    return { c: v === "menino" || v === "menina" || v === "bebe" ? v : undefined };
+  },
   head: () => ({
     meta: [
       { title: "Catálogo de kits infantis · Baby Atacarejo" },

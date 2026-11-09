@@ -77,9 +77,9 @@ function Index() {
 
       <section className="mx-auto mt-24 grid max-w-7xl gap-4 px-5 md:grid-cols-3">
         {([
-          ["menino", "Menino", products[2].image],
-          ["menina", "Menina", products[3].image],
-          ["bebe", "Bebê", products[5].image],
+          ["menino", "Menino", products[2]!.image],
+          ["menina", "Menina", products[3]!.image],
+          ["bebe", "Bebê", products[5]!.image],
         ] as const).map(([c, label, img]) => (
           <Link key={c} to="/catalogo" search={{ c }} className="group relative block aspect-[4/5] overflow-hidden rounded-3xl">
             <img src={img} alt={label} loading="lazy" width={1024} height={1280} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
